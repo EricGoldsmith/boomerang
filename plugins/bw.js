@@ -537,11 +537,10 @@ BOOMR.plugins.BW = {
 	},
 
 	skip: function() {
-		// this is called on unload, so we should abort the test
-		// if it's already started and report results.
-		this.abort();
+		// this is called on unload, so we should cancel unfinished testing
+		// don't want to report inaccurate results based on incomplete testing
 
-		// it's also possible that we didn't start, so sendBeacon never
+		// it's possible that we didn't start, so sendBeacon never
 		// gets called.  Let's set our complete state and call sendBeacon.
 		// This happens if onunload fires before onload
 
